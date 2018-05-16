@@ -120,19 +120,15 @@ export default class GridEdge extends Component {
 
             ;[width, height] = [width, height].map(parseFloat)
 
-            let {angle} = this.getLengthAngle()
-            let newHeight = height * Math.abs(Math.cos(angle)) + width * Math.abs(Math.sin(angle))
-            let heightDiff = newHeight - height
-
             this.setState({
                 labelX: `calc(50% + ${-width / 2 - 6.5}px)`,
                 labelY: ({
                     left: this.props.bend > 0
-                        ? bbox.y - height / 2 - heightDiff * 2 - 10
-                        : bbox.y + bbox.height - height / 2 - heightDiff * 2 - 10,
+                        ? bbox.y - height / 2 - 15
+                        : bbox.y + bbox.height - height / 2 - 15,
                     right: this.props.bend > 0
-                        ? bbox.y - height / 2 + heightDiff * 2 + 10
-                        : bbox.y + bbox.height - height / 2 + heightDiff * 2 + 10,
+                        ? bbox.y - height / 2 + 15
+                        : bbox.y + bbox.height - height / 2 + 15,
                     inside: this.props.bend > 0
                         ? bbox.y - height / 2
                         : bbox.y + bbox.height - height / 2
